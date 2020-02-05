@@ -1,0 +1,64 @@
+<?php
+session_start();
+if(!isset($_SESSION['id'])){
+    header('Location:login.php');
+    exit();
+}
+
+// if(isset($_GET['logout'])){
+//     session_destroy();
+//     unset($_SESSION['id']);
+//     unset($_SESSION['username']);
+//     unset($_SESSION['email']);
+//     unset($_SESSION['verified']);
+//     header("Location:login.php");
+//     exit();
+// }
+require "controllers/logout_controller.php";
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+<div class="container"></div>
+    <div class="row mt-5">
+        <div class="col-md-12 offset-md-4">
+        <?php if(isset($_SESSION['message'])): ?>
+            <div class="<?php echo $_SESSION['msgClass']; ?> w-25">
+                <p><?php echo $_SESSION['message']; ?> 
+                <?php unset($_SESSION['message']); ?></p>
+            </div>
+            
+        <?php endif; ?>
+        <h2>Welcome <?php echo $_SESSION['username']; ?></h2>
+        <a href="index.php?logout=1" class="text-danger">logout</a>
+        <?php if(!$_SESSION['verified']): ?>
+            <div class="jumbotron w-25">
+                
+                <p>You need to verify your account before you have full access to our site
+                sign in to your email account and click on the verification link, we just emailed you at
+                <strong><?php echo $_SESSION['email']; ?></strong>
+                </p>
+                
+        <?php endif; ?>
+        <?php if($_SESSION['verified']): ?>
+                <button type="submit" class="btn btn-primary">Verify Account</button>
+        <?php endif; ?>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>    
+</body>
+</html>
