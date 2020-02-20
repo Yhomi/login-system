@@ -1,6 +1,7 @@
 <?php
 session_start();
 require 'config/db.php';
+require 'emailController.php';
 $msg="";
 $msgClass="";
 if(isset($_POST['submit'])){
@@ -45,6 +46,7 @@ if(isset($_POST['submit'])){
                        $_SESSION['username']=$name;
                        $_SESSION['email']=$email;
                        $_SESSION['verified']=$verified;
+                       sendVerificationEmail($email,$token);
                        $_SESSION['message']="You are logged in";
                        $_SESSION['msgClass']="alert alert-success";
 
