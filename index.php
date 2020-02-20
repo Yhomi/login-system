@@ -1,20 +1,42 @@
 <?php
 session_start();
+require_once "controllers/logout_controller.php";
+require_once 'config/db.php';
+
 if(!isset($_SESSION['id'])){
     header('Location:login.php');
     exit();
 }
 
-// if(isset($_GET['logout'])){
-//     session_destroy();
-//     unset($_SESSION['id']);
-//     unset($_SESSION['username']);
-//     unset($_SESSION['email']);
-//     unset($_SESSION['verified']);
-//     header("Location:login.php");
-//     exit();
-// }
-require "controllers/logout_controller.php";
+if(isset($_GET['token'])){
+    $token=$_GET['token'];
+    verifyUser($token);
+}
+function verifyUser($token){
+    global $conn;
+    $sql="SELECT FROM system_info WHERE token=$token LIMIT 1";
+    $result=mysqli_query($conn,$sql);
+
+    if(mysqli_num_rows($result) > 0){
+        $user=mysqli_fetch_assoc($result);
+        $update_query="UPDATE system_info SET verified=1 WHERE token=$token";
+        if(mysqli_query($conn, $update_query)){
+                $_SESSION['id']=$user['id'];
+                $_SESSION['username']=$user['username'];
+                $_SESSION['email']=$user['email'];
+                $_SESSION['verified']=1;
+                $_SESSION['message']="Your email address was successfully verified!";
+                $_SESSION['msgClass']="alert alert-success";
+        }else{
+            echo "User Not Found";
+        }
+    }
+}
+
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

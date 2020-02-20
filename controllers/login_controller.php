@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'config/db.php';
+require_once 'config/db.php';
 $msg="";
 $msgClass="";
     if(isset($_POST['submit'])){
@@ -24,7 +24,7 @@ $msgClass="";
                 $_SESSION['email']=$user['email'];
                 $_SESSION['verified']=$user['verified'];
                 $_SESSION['message']="You are now logged in!";
-                $_SESSION[msgClass]="alert alert-success";
+                $_SESSION['msgClass']="alert alert-success";
                 header("Location:index.php");
 
             }else{
