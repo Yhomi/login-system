@@ -61,7 +61,7 @@ $mailer = new Swift_Mailer($transport);
         <body>
             <div class="wrapper">
                 <p>Please click on the link below to reset your password</p>
-                <a href="http://localhost:81/phplessons/login-system/index.php?password_token='.$token.'">
+                <a href="http://localhost:81/phplessons/login-system/reset_password.php?password_token='.$token.'">
                     Reset your Password
                 </a>
             </div>

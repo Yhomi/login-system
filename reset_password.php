@@ -1,5 +1,10 @@
 <?php
-require 'controllers/forgot_passwordController.php';
+session_start();
+include 'controllers/reset_passwordController.php';
+require_once "config/db.php";
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -18,11 +23,13 @@ require 'controllers/forgot_passwordController.php';
 <div class="container"></div>
     <div class="row justify-content-center">
         <div class="col-sm-4">
-            <form class="mt-5 pt-5" action="login.php" method="POST">
+            <form class="mt-5 pt-5" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                 <h3 class="text-center text-secondary">Reset Your Password</h3>
-                <div class="<?php echo $msgClass; ?> w-25">
-                    <p><?php echo $msg; ?></p>
-                </div>
+                <?php if($msg !=""): ?>
+                    <div class="<?php echo $msgClass; ?> w-25">
+                        <p><?php echo $msg; ?></p>
+                    </div>
+                <?php endif; ?>
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" name="password" class="form-control">

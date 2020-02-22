@@ -37,22 +37,6 @@ function verifyUser($token){
    
 }
 
-if(isset($_GET['password_token'])){
-    $Password_token=$_GET['password_token'];
-
-    resetPassword($Password_token);
-}
-
-function resetPassword($token){
-    global $conn;
-    $sql="SELECT * FROM system_info WHERE token=?";
-    $stmt=$conn->prepare($sql);
-    $stmt->bind_param('s',$token);
-    $result=$stmt->get_result();
-    $user=$result->fetch_assoc();
-    $_SESSION['email']=$user['email'];
-    header("Location:reset_password.php");
-}
 
 
 
