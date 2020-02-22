@@ -1,5 +1,5 @@
 <?php
-require 'controllers/login_controller.php';
+require_once 'controllers/forgot_passwordController';
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@ require 'controllers/login_controller.php';
 <div class="container"></div>
     <div class="row justify-content-center">
         <div class="col-sm-4">
-            <form class="mt-5 pt-5" action="login.php" method="POST">
+            <form class="mt-5 pt-5" action="l" method="POST">
                 <h3 class="text-center text-secondary">Recover Your Password</h3>
                 <div class="<?php echo $msgClass; ?> w-25">
                     <p><?php echo $msg; ?></p>
