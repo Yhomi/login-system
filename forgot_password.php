@@ -8,7 +8,7 @@ require 'controllers/login_controller.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Forgot Password</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -19,25 +19,19 @@ require 'controllers/login_controller.php';
     <div class="row justify-content-center">
         <div class="col-sm-4">
             <form class="mt-5 pt-5" action="login.php" method="POST">
-                <h3 class="text-center text-secondary">Login</h3>
+                <h3 class="text-center text-secondary">Recover Your Password</h3>
                 <div class="<?php echo $msgClass; ?> w-25">
                     <p><?php echo $msg; ?></p>
                 </div>
                 <div class="form-group">
-                    <label for="username">Username OR Email</label>
+                    <label for="email">Email</label>
                     <input type="text" name="email" class="form-control">
                 </div>
                
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" class="form-control">
+                    <button type="submit" name="submit" class="btn btn-primary btn-block">Recover Password</button>
                 </div>
-               
-                <div class="form-group">
-                    <button type="submit" name="submit" class="btn btn-primary btn-block"><i class="fa fa-lock"></i>&nbsp;Login</button>
-                </div>
-                <p class="float-left text-center" > Not yet a member? <a href="sign-up.php">Sign Up</a></p><br>
-                <a href="forgot_password.php" style="position:relative;right:200px;">Forgot Password?</a>
+                
                 
             </form>
         </div>
