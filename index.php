@@ -14,12 +14,15 @@ if(isset($_GET['token'])){
 }
 function verifyUser($token){
     global $conn;
-    $sql="SELECT FROM system_info WHERE token=$token LIMIT 1";
-    $result=mysqli_query($conn,$sql);
-
-    if(mysqli_num_rows($result) > 0){
-        $user=mysqli_fetch_assoc($result);
-        $update_query="UPDATE system_info SET verified=1 WHERE token=$token";
+    $stmt=$conn->prepare("SELECT * FROM system_info WHERE token=?");
+    $stmt->bind_param('s',$token);
+    $stmt->execute();
+    $result=$stmt->get_result();
+    $row=$result->num_rows;
+    if($row >0){
+        $user=$result->fetch_assoc();
+        $up_id=$user['id'];
+        $update_query="UPDATE system_info SET verified=1 WHERE id=$up_id";
         if(mysqli_query($conn, $update_query)){
                 $_SESSION['id']=$user['id'];
                 $_SESSION['username']=$user['username'];
@@ -31,6 +34,7 @@ function verifyUser($token){
             echo "User Not Found";
         }
     }
+   
 }
 
 
@@ -62,7 +66,7 @@ function verifyUser($token){
             
         <?php endif; ?>
         <h2>Welcome <?php echo $_SESSION['username']; ?></h2>
-        <a href="index.php?logout=1" class="text-danger">logout</a>
+        <a href="index.php?logout=1" class="text-danger">logout</a><br>
         <?php if(!$_SESSION['verified']): ?>
             <div class="jumbotron w-25">
                 
