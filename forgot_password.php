@@ -20,7 +20,7 @@ require_once 'controllers/forgot_passwordController.php';
         <div class="col-sm-4">
             <form class="mt-5 pt-5" action="<?php echo $_SERVER['PHP_SELF']?>" method="POST">
                 <h3 class="text-center text-secondary">Recover Your Password</h3>
-                <div class="<?php echo $msgClass; ?> w-25">
+                <div class="<?php echo $msgClass; ?>">
                     <p><?php echo $msg; ?></p>
                 </div>
                 <div class="form-group">

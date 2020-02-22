@@ -78,7 +78,7 @@ function verifyUser($token){
                 
         <?php endif; ?>
         <?php if($_SESSION['verified']): ?>
-                <button type="submit" class="btn btn-primary">Verify Account</button>
+                <button type="submit" class="btn btn-primary">Account Verified</button>
         <?php endif; ?>
                 
             </div>

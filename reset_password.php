@@ -26,7 +26,7 @@ require_once "config/db.php";
             <form class="mt-5 pt-5" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                 <h3 class="text-center text-secondary">Reset Your Password</h3>
                 <?php if($msg !=""): ?>
-                    <div class="<?php echo $msgClass; ?> w-25">
+                    <div class="<?php echo $msgClass; ?>">
                         <p><?php echo $msg; ?></p>
                     </div>
                 <?php endif; ?>

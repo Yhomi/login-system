@@ -20,7 +20,7 @@ require 'controllers/login_controller.php';
         <div class="col-sm-4">
             <form class="mt-5 pt-5" action="login.php" method="POST">
                 <h3 class="text-center text-secondary">Login</h3>
-                <div class="<?php echo $msgClass; ?> w-25">
+                <div class="<?php echo $msgClass; ?>">
                     <p><?php echo $msg; ?></p>
                 </div>
                 <div class="form-group">
