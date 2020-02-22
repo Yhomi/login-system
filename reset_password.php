@@ -34,7 +34,7 @@ require 'controllers/forgot_passwordController.php';
                 </div>
                
                 <div class="form-group">
-                    <button type="submit" name="submit" class="btn btn-primary btn-block"><i class="fa fa-lock"></i>&nbsp;Login</button>
+                    <button type="submit" name="submit" class="btn btn-primary btn-block">Reset Password</button>
                 </div>
             </form>
         </div>

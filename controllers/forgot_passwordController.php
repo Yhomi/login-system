@@ -1,5 +1,6 @@
 <?php
 require_once "config/db.php";
+require_once "controllers/emailController.php";
 $msg="";
 $msgClass="";
 if(isset($_POST['submit'])){
@@ -20,6 +21,7 @@ if(isset($_POST['submit'])){
             $user=$result->fetch_assoc();
             $token=$user['token'];
             sendPasswordReset($email,$token);
+            header("Location:message.php");
         }
     }
 }
